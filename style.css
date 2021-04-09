@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border: 1px solid black;
+  min-height: 460px;
+  width: 70%;
+  background-color: rgb(230, 230, 243);
+}
+
+body {
+  background-color: bisque;
+  font-family: "Fredoka One", cursive;
+}
+
+.title {
+  font-size: 30px;
+  text-shadow: 4px 2px 5px red;
+  color: black;
+  text-align: center;
+}
+
+.remain-guess {
+  display: flex;
+}
+
+.remain-guess > h3 {
+  margin: 5px;
+}
