@@ -1,92 +1,62 @@
-const resetBtn = document.querySelector('.reset')
-const abcBtn = document.querySelector('.buttons')
-let guesses = document.querySelector('.remain-guess')
-const pastGuess = document.querySelector('.part-guesses')
-
 //VARIABLES
-let secretWord = ''
-let maxGuesses = 6
-let pastGuesses = []
-let currentWord = ''
 let possibleWords = ['cat', 'dog', 'lion', 'zebra', 'tiger', 'bear', 'rhino']
+let secretWord = ''
+let hiddenWord = []
+let pastGuesses = []
+let lettersLeft = 0
 
 //STATE
-
-let playerGuess = {
+let guessTracker = {
     guess: 6
 }
+let guesses = document.querySelector('.remain-guess')
+guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
+
+const resetBtn = document.querySelector('.reset')
+const abcBtn = document.querySelector('.buttons')
+const pastGuess = document.querySelector('.part-guesses')
 
 //LISTENERS:
 resetBtn.addEventListener('click', function (e){
     start();
-    console.log(secretWord)
-    console.log(currentWord)
 })
 
-function randomWord(){
-    let randomElement = possibleWords[Math.floor(Math.random() * possibleWords.length)];
-    secretWord = randomElement
-    let underscored = secretWord.split('').map(function(char) {
-        return char = '_ ';
-    }).join('');
-    document.getElementById("secret-word").innerHTML = `Guess the animal: ${underscored}`;
+function start(){    
+    secretWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
+    lettersLeft = secretWord.length;    
+    for(let n = 0; n < secretWord.length; n++){
+        hiddenWord[n] = '_'
+    }
+    document.getElementById("secret-word").innerHTML = `Guess the animal: ${hiddenWord.join(' ')}`;    
+    buttons()
+    
+    console.log(secretWord)
+    console.log(hiddenWord)    
 }
 
 function buttons(){
-abcBtn.addEventListener('click', function(e) {
-    if(e.target.tagName === 'BUTTON' ){
-    abcBtn.value = e.target.innerText;
-    console.log(abcBtn.value)
+    abcBtn.addEventListener('click', function(e) {
+        if(e.target.tagName === 'BUTTON' ){
+            abcBtn.value = e.target.innerText;
+            gamePlay(e.target.innerText.toLowerCase());   
+        }  
+    }) 
+}
+
+function gamePlay(ltr){
+    if(secretWord.indexOf(ltr) === -1){
+        pastGuesses.push(ltr)
+        guessTracker.guess--;
+        console.log(guessTracker.guess)
+        render();
+
+    }if (secretWord.indexOf(ltr) > -1){
+        console.log('match')
     }
-  }) 
+} 
+
+function render(){
+    if(guessTracker.guess === 0){
+        console.log('YOU LOSE!')
+    }
 }
-
-
-function start(){
-    randomWord()
-    buttons()
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//create buttons function
-// function createButtons(){
-//     for(let i = 0; i<alphabetArray.length; i++){
-//         const btn = document.createElement('button')
-//         btn.className = 'abc'
-//         btn.setAttribute('data-ltr', alphabetArray[i]);
-//         btn.innerHTML = alphabetArray[i]
-//         btn.value = btn.innerHTML;
-//         div.appendChild(btn);
-
-//         //add event listener to button
-//         btn.addEventListener('click', function(e){
-//         e.preventDefault();
-//         let target = e.target;
-
-//         //show result on screen
-//         let buttonText = document.createElement('p')
-//         buttonText.innerHTML = target.value.toString();
-//         document.body.appendChild(buttonText)
-//         console.log(buttonText.innerText)
-//         })    
-//     }
-// }
-// createButtons()
-
-
-
