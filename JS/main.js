@@ -43,7 +43,6 @@ function start(){
     }
     document.getElementById("secret-word").innerHTML = `Guess the movie: ${hiddenWord.join(' ')}`;    
     buttons()
-    images();
 }
 
 function buttons(){
@@ -56,12 +55,14 @@ function buttons(){
     }) 
 }
 
+
 function gamePlay(ltr){
     //IF INCORRECT GUESS
     if(secretWord.indexOf(ltr) === -1){
         pastGuesses.push(ltr)
         if(guessTracker.guess <= 0)return;
         guessTracker.guess--;
+        renderImage();
         pastGuess.innerHTML = `Past Guesses: ${pastGuesses.join(' ')}`
         guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
         render();
@@ -80,22 +81,47 @@ function render(){
     if(guessTracker.guess === 0){
         abcBtn.style.display = "none";
         let winner = document.createElement('h2')
-        winner.innerHTML = 'YOU LOOSE!'
+        winner.innerHTML = `YOU LOOSE! The Correct Movie was: ${secretWord}`
         let win = document.querySelector('.win-lose')
         win.appendChild(winner);
         resetBtn.style.display = 'block';
         resetBtn.innerHTML = 'Play Again?'; 
+        
 
     }if(lettersLeft === 0){
-        console.log('YOU WIN!')
         abcBtn.style.display = "none";
         let winner = document.createElement('h2')
-        winner.innerHTML = 'YOU WIN!'
+        winner.innerHTML = 'CONGRATULATIONS YOU WON!'
         let win = document.querySelector('.win-lose')
         win.appendChild(winner);
         resetBtn.style.display = 'block';
         resetBtn.innerHTML = 'Play Again?'; 
 
+    }
+}
+
+
+
+function renderImage(){
+    if(guessTracker.guess === 5){
+        imgSev.style.display = 'none';
+        imgSix.style.display = 'block';
+    }if(guessTracker.guess === 4){
+        imgSix.style.display = 'none';
+        imgFive.style.display = 'block';
+    }if(guessTracker.guess === 3){
+        imgFive.style.display = 'none';
+        imgFour.style.display = 'block';
+    }if(guessTracker.guess === 2){
+        // renderHint();//MAKE HINT FUNCTION
+        imgFour.style.display = 'none';
+        imgThree.style.display = 'block';
+    }if(guessTracker.guess === 1){
+        imgThree.style.display = 'none';
+        imgTwo.style.display = 'block';
+    }if(guessTracker.guess === 0){
+        imgTwo.style.display = 'none';
+        imgOne.style.display = 'block';
     }
 }
 
@@ -105,11 +131,3 @@ function reset(){
 }
 
 
-
-function images(){
-    if(guessTracker.guess === 5){
-        imgOne.style.display = 'none';
-        console.log('!')
-    }
-
-}
