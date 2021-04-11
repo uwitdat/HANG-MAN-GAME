@@ -5,9 +5,25 @@ let imgFour = document.getElementById('four')
 let imgFive = document.getElementById('five')
 let imgSix = document.getElementById('six')
 let imgSev = document.getElementById('sev')
+
+let hint = document.querySelector('.hint')
 //VARIABLES
-let possibleWords = ['cat', 'dog', 'lion', 'zebra', 'tiger', 'bear', 'rhino']
+// let possibleWords = ['cat', 'dog', 'lion', 'zebra', 'tiger', 'bear', 'rhino']
+let possibleWords = [
+    {movie: 'cat', hint: '.........'},
+    {movie: 'dog', hint: '1111111111'},
+    {movie: 'lion', hint: '2222222223'},
+    {movie: 'zebra', hint: '3333333333'},
+    {movie: 'tiger', hint: '44444444444'},
+    {movie: 'bear', hint: '5555555555'},
+    {movie: 'rhino', hint:'666666666'}
+    ]
+
+
+
+
 let secretWord = ''
+let secretHint = ''
 let hiddenWord = []
 let pastGuesses = []
 let lettersLeft = 0
@@ -36,8 +52,11 @@ resetBtn.addEventListener('click', function (e){
 
 function start(){ 
     resetBtn.style.display = 'none';   
-    secretWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
-    lettersLeft = secretWord.length;    
+    let randomizer = possibleWords[Math.floor(Math.random() * possibleWords.length)];
+    secretWord = randomizer.movie
+    secretHint = randomizer.hint
+    lettersLeft = secretWord.length;
+
     for(let n = 0; n < secretWord.length; n++){
         hiddenWord[n] = '_'
     }
@@ -86,21 +105,21 @@ function render(){
         win.appendChild(winner);
         resetBtn.style.display = 'block';
         resetBtn.innerHTML = 'Play Again?'; 
+        hint.style.display = "none";
         
 
     }if(lettersLeft === 0){
         abcBtn.style.display = "none";
         let winner = document.createElement('h2')
-        winner.innerHTML = 'CONGRATULATIONS YOU WON!'
+        winner.innerHTML = `YOU WON! The Movie Was: ${secretWord}`
         let win = document.querySelector('.win-lose')
         win.appendChild(winner);
         resetBtn.style.display = 'block';
         resetBtn.innerHTML = 'Play Again?'; 
+        hint.style.display = "none";
 
     }
 }
-
-
 
 function renderImage(){
     if(guessTracker.guess === 5){
@@ -113,7 +132,7 @@ function renderImage(){
         imgFive.style.display = 'none';
         imgFour.style.display = 'block';
     }if(guessTracker.guess === 2){
-        // renderHint();//MAKE HINT FUNCTION
+        renderHint();
         imgFour.style.display = 'none';
         imgThree.style.display = 'block';
     }if(guessTracker.guess === 1){
@@ -123,6 +142,20 @@ function renderImage(){
         imgTwo.style.display = 'none';
         imgOne.style.display = 'block';
     }
+}
+
+
+function renderHint(){
+    hint.style.display = "block";
+    hint.addEventListener('click',function(e){
+    target = e.target;
+    target.textContent = secretHint;
+    let hintText = document.createElement('h3')
+    hintText.className = 'hint-text'
+    hintText.textContent = secretHint;
+    document.body.appendChild(hintText)
+    hint.style.display = 'none';
+    })
 }
 
 //MAKE RESET FUNCTION!

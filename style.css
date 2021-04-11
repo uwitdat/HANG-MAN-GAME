@@ -66,5 +66,6 @@ body {
   display: none;
 }
 
-#sev {
+.hint {
+  display: none;
 }
