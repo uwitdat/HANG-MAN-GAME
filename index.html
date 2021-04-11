@@ -10,15 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet"> 
     <script defer src="JS/main.js"></script>
     
-    <title>Hangman Game</title>
+    <title>HANGMAN</title>
 </head>
     <body>
         <div class='title'>
             <h1>HANGMAN</h1>
+            <h4>Movie Edition</h4>
         </div>  
 
+        <div class='win-lose'></div>
+
         <section  class="guess">
-            <div class="remain-guess">Guesses Remaining: </div>
+            <div class="remain-guess">Guesses Remaining:6 </div>
             <div class="past-guesses">Past Guesses:</div>
 
         </section>
@@ -28,7 +31,13 @@
         <div class="container">
             
             <div class="img">
-                insert image here:
+                <img id='sev'src="./IMG/1.png" alt="">
+                <img id='one'src="./IMG/7.png" alt="">
+                <img id='two'src="./IMG/6.png" alt="">
+                <img id='three'src="./IMG/5.png" alt="">
+                <img id='four'src="./IMG/4.png" alt="">
+                <img id='five'src="./IMG/3.png" alt="">
+                <img id='six'src="./IMG/2.png" alt="">
             </div>
         </div>
         <div class="buttons">
@@ -59,6 +68,6 @@
             <button>Y</button>
             <button>Z</button>
         </div>
-        <button class="reset">START/RESET</button>
+        <button class="reset">PLAY HANGMAN</button>
     </body>
 </html>
