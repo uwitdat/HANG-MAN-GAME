@@ -3,14 +3,46 @@
   justify-content: center;
   margin: auto;
   border: 1px solid black;
-  min-height: 460px;
-  width: 70%;
+  min-height: 420px;
+  width: 60%;
   background-color: rgb(230, 230, 243);
 }
 
 body {
-  background-color: bisque;
-  font-family: "Fredoka One", cursive;
+  background: linear-gradient(to right, #0a1864, #161616);
+  font-family: "Crimson Text", serif;
+}
+
+.container {
+}
+
+.buttons {
+  padding: 7px;
+  margin: 7px;
+}
+
+.buttons > button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  color: #ffffffdc;
+  font-size: larger;
+  background-color: transparent;
+  padding: 5px;
+  margin: 3px;
+  border: 0.1em solid #ffffff;
+}
+
+.buttons > button:hover {
+  transform: scale(1.2) perspective(1px);
+  border: 0.1em solid #ffffff;
+  color: #ffffff;
+}
+
+.buttons > button:disabled {
+  transform: scale(0.7) perspective(1px);
+  background: rgb(231, 230, 230);
+  opacity: 10%;
+  color: rgb(11, 11, 36);
 }
 
 .title {
@@ -28,14 +60,20 @@ body {
   margin: 5px;
 }
 
-.buttons > button {
+.reset {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffffdc;
+  font-size: larger;
+  background-color: transparent;
+  padding: 5px;
+  margin: 3px;
+  border: 0.1em solid #ffffff;
 }
 
-.buttons > button:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-.reset {
-  cursor: pointer;
+.reset:hover {
+  transform: scale(1.2) perspective(1px);
+  border: 0.1em solid #ffffff;
+  color: #ffffff;
 }
 
 .img {
@@ -67,10 +105,36 @@ body {
 
 .hint {
   display: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffffdc;
+  font-size: larger;
+  background-color: transparent;
+  padding: 5px;
+  margin: 3px;
+  border: 0.1em solid #ffffff;
+}
+
+.hint:hover {
+  transform: scale(1.2) perspective(1px);
+  border: 0.1em solid #ffffff;
+  color: #ffffff;
 }
 
 .play-again {
   display: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffffdc;
+  font-size: larger;
+  background-color: transparent;
+  padding: 5px;
+  margin: 3px;
+  border: 0.1em solid #ffffff;
+}
+
+.play-again:hover {
+  transform: scale(1.2) perspective(1px);
+  border: 0.1em solid #ffffff;
+  color: #ffffff;
 }
 
 .letter-holder {
@@ -82,4 +146,53 @@ body {
 }
 
 #secret-word {
+}
+
+button.reset {
+  color: black;
+}
+
+.remain-guess {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 150%;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.past-guesses {
+  color: #ffffff;
+  font-size: 150%;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.title {
+  color: #ffffff;
+  font-size: 200%;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+h1 {
+  margin: auto;
+}
+
+h4 {
+  margin: auto;
+}
+
+#secret-word {
+  color: #ffffff;
+  font-size: 300%;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.winner {
+  color: #ffffff;
+  font-size: 200%;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.hint-text {
+  color: #ffffff;
+  font-size: 150%;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }

@@ -1,3 +1,4 @@
+//DOM SELECTORS
 let imgOne = document.getElementById('one')
 let imgTwo = document.getElementById('two')
 let imgThree = document.getElementById('three')
@@ -6,14 +7,13 @@ let imgFive = document.getElementById('five')
 let imgSix = document.getElementById('six')
 let imgSev = document.getElementById('sev')
 let hintText = document.createElement('h3')
-
 let plyAgn = document.querySelector('.play-again')
 let hint = document.querySelector('.hint')
-
 let winner = document.createElement('h2')
+winner.classList.add('winner')
 let win = document.querySelector('.win-lose')
-//VARIABLES
 
+//VARIABLES
 let possibleWords = [
     {movie: 'DOCTOR ZHIVAGO', hint: 'Release Year: 1965, Genre: Romance/War, Director: David Lean'},
     {movie: 'SLUMDOG MILLIONAIRE', hint: 'Release Year: 2008, Genre: Romance/Drama, Director: Danny Boyle'},
@@ -42,18 +42,12 @@ let guessTracker = {
 
 let guesses = document.querySelector('.remain-guess')
 guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
-
 const resetBtn = document.querySelector('.reset')
 const abcBtn = document.querySelector('.buttons')
-
 let pastGuess = document.querySelector('.past-guesses')
 pastGuess.innerHTML = `Wrong Guesses:`
-
 let img = document.getElementById('.img')
-
 let movieWord = document.getElementById("secret-word")
-
-//LISTENERS:
 
 // START
 resetBtn.addEventListener('click', function (e){
@@ -74,31 +68,6 @@ abcBtn.addEventListener('click', function(e) {
     }
 }) 
 
-
-
-// //FUNCTION TWO
-// function start() {
-//     resetBtn.style.display = "none";
-//     let randomizer = possibleWords[Math.floor(Math.random() * possibleWords.length)];
-//     secretWord = randomizer.movie.toLowerCase();
-//     secretHint = randomizer.hint;
-//     lettersLeft = secretWord.length;
-//     for (let n = 0; n < secretWord.length; n++) {
-//       let ltrHolder = document.createElement("div");
-//       ltrHolder.classList.add("letter-holder");
-//       ltrHolder.setAttribute("data-letter", secretWord[n]);
-//       ltrHolder.style.textAlign = "center";
-//       movieWord.appendChild(ltrHolder);
-//       if (secretWord[n] !== " ") {
-//         ltrHolder.style.borderBottom = "solid 1px black";
-//       } else {
-//         lettersLeft--;
-//       }
-//       buttons();
-//     }
-// }
-
-
 function start(){ 
     resetBtn.style.display = 'none';   
     let randomizer = possibleWords[Math.floor(Math.random() * possibleWords.length)];
@@ -113,7 +82,6 @@ function start(){
             hiddenWord[n] = '-'
         }
     }
-
     hiddenWord.forEach(function(char){
         if(char === '-'){
  
@@ -122,54 +90,8 @@ function start(){
             return;
         }
     })
-
-    movieWord.innerHTML = `Guess the movie: ${hiddenWord.join(' ')}`;   
- 
+    movieWord.innerHTML = `${hiddenWord.join(' ')}`;   
     }
-
-
-    // abcBtn.addEventListener('click', function(e) {
-    //     if(e.target.tagName === 'BUTTON' ){
-    //         abcBtn.value = e.target.innerText;
-    //        e.target.setAttribute('disabled', 'disabled')
-    //         gamePlay(e.target.innerText.toLowerCase());   
-    //     }
-    // }) 
-
-
-
-
-// //FUNCTION TWO GAMEPLAY
-// function gamePlay(ltr) {
-//     //IF INCORRECT GUESS
-//     if (secretWord.indexOf(ltr) === -1) {
-//       pastGuesses.push(ltr);
-//       if (guessTracker.guess <= 0) return;
-//       guessTracker.guess--;
-//       renderImage();
-//       pastGuess.innerHTML = `Past Guesses: ${pastGuesses
-//         .join(" ")
-//         .toUpperCase()}`;
-//       guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
-//       render();
-//     } //IF CORRECT GUESS
-//     // for (let j = 0; j < secretWord.length; j++) {
-//     //   if (secretWord[j] === ltr) {
-//         // hiddenWord[j] = ltr;
-//         //get the right div and fill the letter
-//         let correctLetterEl = movieWord.find(function (letterEl) {
-//           return letterEl.getAttribute("data-letter") === ltr;
-//         });
-//         //   movieWord.innerHTML = `Guess the movie: ${hiddenWord
-//         //     .join(" ")
-//         //     .toUpperCase()}`;
-//         correctLetterEl.textContent = ltr;
-//         lettersLeft--;
-//         render();
-//         }
-// //     }
-// // }
-
 
 function gamePlay(ltr){
     //IF INCORRECT GUESS
@@ -185,15 +107,12 @@ function gamePlay(ltr){
         for(let j = 0; j < secretWord.length; j++){
             if(secretWord[j] === ltr){
             hiddenWord[j] = ltr
-            movieWord.innerHTML = `Guess the movie: ${hiddenWord.join(' ').toUpperCase()}` 
+            movieWord.innerHTML = `${hiddenWord.join(' ').toUpperCase()}` 
             lettersLeft--;
             render();
         }   
     }   
 }
-
-
-
 
 function render(){
     //  LOSS CONDITION
@@ -211,7 +130,6 @@ function render(){
         win.appendChild(winner);
         plyAgn.style.display = 'block';
         hint.style.display = "none";
-
     }
 }
 
@@ -238,8 +156,6 @@ function renderImage(){
     }
 }
 
-
-
 function renderHint(){
     hint.style.display = "block";
     hint.addEventListener('click',function(e){
@@ -252,10 +168,8 @@ function renderHint(){
     })
 }
 
-console.log(abcBtn.children);
-
-// // MAKE RESET FUNCTION!
 function playAgain(){
+    //RESET VARIABLES
     secretWord = ''
     secretHint = ''
     hiddenWord = []
@@ -272,21 +186,18 @@ function playAgain(){
     hintText.innerHTML = ''
     hint.innerHTML = 'Need A Hint?'
     abcBtn.style.display = "block";
+    pastGuess.innerHTML = `Wrong Guesses:`
 //RESET IMAGES
     imgOne.style.display = 'none';
     imgTwo.style.display = 'none';
     imgThree.style.display = 'none';
     imgFour.style.display = 'none';
     imgFive.style.display = 'none';
-    imgSix.style.display = 'none';
-  
-
-    
+    imgSix.style.display = 'none'; 
+//RESET BUTTONS
     for(let btn of abcBtn.children){
         btn.removeAttribute('disabled');
-    }
-
-    
+    }   
+ // RUN START FUNCTION   
     start();
-
 }
