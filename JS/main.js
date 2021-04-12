@@ -15,13 +15,13 @@ let win = document.querySelector('.win-lose')
 //VARIABLES
 
 let possibleWords = [
-    {movie: 'Cat', hint: '.........'},
-    {movie: 'Dog', hint: '1111111111'},
-    {movie: 'Lion', hint: '2222222223'},
-    {movie: 'Zebra', hint: '3333333333'},
-    {movie: 'Tiger', hint: '44444444444'},
-    {movie: 'Bear', hint: '5555555555'},
-    {movie: 'Rhino', hint:'666666666'}
+    {movie: 'C aa t', hint: '.........'},
+    {movie: 'D o ggg', hint: '1111111111'},
+    {movie: 'L ii on', hint: '2222222223'},
+    {movie: 'Z ebb ra', hint: '3333333333'},
+    {movie: 'T igg er', hint: '44444444444'},
+    {movie: 'B eaa r', hint: '5555555555'},
+    {movie: 'R hii no', hint:'666666666'}
     ]
 
 let secretWord = ''
@@ -42,7 +42,7 @@ const resetBtn = document.querySelector('.reset')
 const abcBtn = document.querySelector('.buttons')
 
 let pastGuess = document.querySelector('.past-guesses')
-pastGuess.innerHTML = `Past Guesses:`
+pastGuess.innerHTML = `Wrong Guesses:`
 
 let img = document.getElementById('.img')
 
@@ -58,8 +58,32 @@ resetBtn.addEventListener('click', function (e){
 plyAgn.addEventListener('click', function (e){
     playAgain();
  
-
 })
+
+
+
+// //FUNCTION TWO
+// function start() {
+//     resetBtn.style.display = "none";
+//     let randomizer = possibleWords[Math.floor(Math.random() * possibleWords.length)];
+//     secretWord = randomizer.movie.toLowerCase();
+//     secretHint = randomizer.hint;
+//     lettersLeft = secretWord.length;
+//     for (let n = 0; n < secretWord.length; n++) {
+//       let ltrHolder = document.createElement("div");
+//       ltrHolder.classList.add("letter-holder");
+//       ltrHolder.setAttribute("data-letter", secretWord[n]);
+//       ltrHolder.style.textAlign = "center";
+//       movieWord.appendChild(ltrHolder);
+//       if (secretWord[n] !== " ") {
+//         ltrHolder.style.borderBottom = "solid 1px black";
+//       } else {
+//         lettersLeft--;
+//       }
+//       buttons();
+//     }
+// }
+
 
 function start(){ 
     resetBtn.style.display = 'none';   
@@ -67,19 +91,28 @@ function start(){
     secretWord = randomizer.movie.toLowerCase();
     secretHint = randomizer.hint
     lettersLeft = secretWord.length;
-    for(let n = 0; n < secretWord.length; n++) {
-        if(secretWord[n] === ' '){
-            hiddenWord[n] = ' ';
-        }else {
-            
-            hiddenWord[n] = '_' 
+
+    for(let n = 0; n < secretWord.length; n++){
+        if(secretWord[n] !== ' '){
+            hiddenWord[n] = '_'
+        }else{
+            hiddenWord[n] = '-'
         }
     }
 
+    hiddenWord.forEach(function(char){
+        if(char === '-'){
+ 
+            lettersLeft--
+        }else{
+            return;
+        }
+    })
+
     movieWord.innerHTML = `Guess the movie: ${hiddenWord.join(' ')}`;   
     buttons() 
-
-}
+ 
+    }
 
 function buttons(){
     abcBtn.addEventListener('click', function(e) {
@@ -91,6 +124,40 @@ function buttons(){
     }) 
 }
 
+
+
+// //FUNCTION TWO GAMEPLAY
+// function gamePlay(ltr) {
+//     //IF INCORRECT GUESS
+//     if (secretWord.indexOf(ltr) === -1) {
+//       pastGuesses.push(ltr);
+//       if (guessTracker.guess <= 0) return;
+//       guessTracker.guess--;
+//       renderImage();
+//       pastGuess.innerHTML = `Past Guesses: ${pastGuesses
+//         .join(" ")
+//         .toUpperCase()}`;
+//       guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
+//       render();
+//     } //IF CORRECT GUESS
+//     // for (let j = 0; j < secretWord.length; j++) {
+//     //   if (secretWord[j] === ltr) {
+//         // hiddenWord[j] = ltr;
+//         //get the right div and fill the letter
+//         let correctLetterEl = movieWord.find(function (letterEl) {
+//           return letterEl.getAttribute("data-letter") === ltr;
+//         });
+//         //   movieWord.innerHTML = `Guess the movie: ${hiddenWord
+//         //     .join(" ")
+//         //     .toUpperCase()}`;
+//         correctLetterEl.textContent = ltr;
+//         lettersLeft--;
+//         render();
+//         }
+// //     }
+// // }
+
+
 function gamePlay(ltr){
     //IF INCORRECT GUESS
     if(secretWord.indexOf(ltr) === -1){
@@ -98,7 +165,7 @@ function gamePlay(ltr){
         if(guessTracker.guess <= 0)return;
         guessTracker.guess--;
         renderImage();
-        pastGuess.innerHTML = `Past Guesses: ${pastGuesses.join(' ').toUpperCase()}`
+        pastGuess.innerHTML = `Wrong Guesses: ${pastGuesses.join(' ').toUpperCase()}`
         guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
         render();   
     }   //IF CORRECT GUESS     
@@ -111,6 +178,9 @@ function gamePlay(ltr){
         }   
     }   
 }
+
+
+
 
 function render(){
     //  LOSS CONDITION
@@ -167,7 +237,7 @@ function renderHint(){
     })
 }
 
-
+console.log(abcBtn.children);
 
 // // MAKE RESET FUNCTION!
 function playAgain(){
@@ -186,6 +256,11 @@ function playAgain(){
     imgSev.style.display = 'block';
     hintText.innerHTML = ''
     abcBtn.style.display = "block";
+    
+    for(let btn of abcBtn.children){
+        btn.removeAttribute('disabled');
+    }
+
     
     start();
 

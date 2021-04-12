@@ -72,3 +72,14 @@ body {
 .play-again {
   display: none;
 }
+
+.letter-holder {
+  display: flex;
+  justify-content: center;
+  height: 10px;
+  margin: 10px;
+  width: 10px;
+}
+
+#secret-word {
+}
