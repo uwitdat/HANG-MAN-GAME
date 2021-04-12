@@ -69,3 +69,7 @@ body {
 .hint {
   display: none;
 }
+
+.play-again {
+  display: none;
+}
