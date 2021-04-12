@@ -67,7 +67,15 @@ function start(){
     secretWord = randomizer.movie.toLowerCase();
     secretHint = randomizer.hint
     lettersLeft = secretWord.length;
-    for(let n = 0; n < secretWord.length; n++) hiddenWord[n] = '_' 
+    for(let n = 0; n < secretWord.length; n++) {
+        if(secretWord[n] === ' '){
+            hiddenWord[n] = ' ';
+        }else {
+            
+            hiddenWord[n] = '_' 
+        }
+    }
+
     movieWord.innerHTML = `Guess the movie: ${hiddenWord.join(' ')}`;   
     buttons() 
 
@@ -93,8 +101,7 @@ function gamePlay(ltr){
         pastGuess.innerHTML = `Past Guesses: ${pastGuesses.join(' ').toUpperCase()}`
         guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
         render();   
-    }
-        
+    }   //IF CORRECT GUESS     
         for(let j = 0; j < secretWord.length; j++){
             if(secretWord[j] === ltr){
             hiddenWord[j] = ltr
@@ -106,6 +113,7 @@ function gamePlay(ltr){
 }
 
 function render(){
+    //  LOSS CONDITION
     if(guessTracker.guess === 0){
         abcBtn.style.display = "none";
         winner.innerHTML = `YOU LOOSE! The Correct Movie was: ${secretWord}`
@@ -113,6 +121,7 @@ function render(){
         plyAgn.style.display = 'block';
         hint.style.display = "none";
 
+        // WIN CONDITION
     }if(lettersLeft === 0){
         abcBtn.style.display = "none";
         winner.innerHTML = `YOU WON! The Movie Was: ${secretWord}`
@@ -158,9 +167,9 @@ function renderHint(){
     })
 }
 
+
+
 // // MAKE RESET FUNCTION!
-
-
 function playAgain(){
     secretWord = ''
     secretHint = ''
