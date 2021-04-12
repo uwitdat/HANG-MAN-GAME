@@ -15,13 +15,18 @@ let win = document.querySelector('.win-lose')
 //VARIABLES
 
 let possibleWords = [
-    {movie: 'C aa t', hint: '.........'},
-    {movie: 'D o ggg', hint: '1111111111'},
-    {movie: 'L ii on', hint: '2222222223'},
-    {movie: 'Z ebb ra', hint: '3333333333'},
-    {movie: 'T igg er', hint: '44444444444'},
-    {movie: 'B eaa r', hint: '5555555555'},
-    {movie: 'R hii no', hint:'666666666'}
+    {movie: 'DOCTOR ZHIVAGO', hint: 'Release Year: 1965, Genre: Romance/War, Director: David Lean'},
+    {movie: 'SLUMDOG MILLIONAIRE', hint: 'Release Year: 2008, Genre: Romance/Drama, Director: Danny Boyle'},
+    {movie: 'BEAUTY AND THE BEAST', hint: 'Release Year: 1991, Genre: Disney/Kids, Director: Gary Trousdale'},
+    {movie: 'BROKEBACK MOUNTAIN', hint: 'Release Year: 2005, Genre: Romance/Drama, Director: Ang Lee'},
+    {movie: 'THE GOOD THE BAD AND THE UGLY', hint: 'Release Year: 1966, Genre: Western, Director: Sergio Leone'},
+    {movie: 'THE TITANIC', hint: 'Release Year: 1997, Genre: Romance/Drama, Director: James Cameron'},
+    {movie: 'GLADIATOR', hint:'Release Year: 2000, Genre: Action/Adv, Director: Ridley Scott'},
+    {movie: 'AVATAR', hint:'Release Year: 2009, Genre: Sci-Fi, Director: James Cameron'},
+    {movie: 'THE LION KING', hint:'Release Year: 1994, Genre: Disney/Kids, Director: Rob Minkoff'},
+    {movie: 'GROUNDHOG DAY', hint:'Release Year: 1993, Genre: Comedy, Director: Harold Ramis'},
+    {movie: 'TAXI DRIVER', hint:'Release Year: 1976, Genre: Crime/Drama, Director: Martin Scorsese'},
+    {movie: 'THE MATRIX', hint:'Release Year: 1999, Genre: Sci-Fi, Director: The Wachowskis'}
     ]
 
 let secretWord = ''
@@ -57,8 +62,17 @@ resetBtn.addEventListener('click', function (e){
 
 plyAgn.addEventListener('click', function (e){
     playAgain();
+    plyAgn.style.display = 'none';
  
 })
+
+abcBtn.addEventListener('click', function(e) {
+    if(e.target.tagName === 'BUTTON' ){
+        abcBtn.value = e.target.innerText;
+       e.target.setAttribute('disabled', 'disabled')
+        gamePlay(e.target.innerText.toLowerCase());   
+    }
+}) 
 
 
 
@@ -110,19 +124,18 @@ function start(){
     })
 
     movieWord.innerHTML = `Guess the movie: ${hiddenWord.join(' ')}`;   
-    buttons() 
  
     }
 
-function buttons(){
-    abcBtn.addEventListener('click', function(e) {
-        if(e.target.tagName === 'BUTTON' ){
-            abcBtn.value = e.target.innerText;
-           e.target.setAttribute('disabled', 'disabled')
-            gamePlay(e.target.innerText.toLowerCase());   
-        }
-    }) 
-}
+
+    // abcBtn.addEventListener('click', function(e) {
+    //     if(e.target.tagName === 'BUTTON' ){
+    //         abcBtn.value = e.target.innerText;
+    //        e.target.setAttribute('disabled', 'disabled')
+    //         gamePlay(e.target.innerText.toLowerCase());   
+    //     }
+    // }) 
+
 
 
 
@@ -186,7 +199,7 @@ function render(){
     //  LOSS CONDITION
     if(guessTracker.guess === 0){
         abcBtn.style.display = "none";
-        winner.innerHTML = `YOU LOOSE! The Correct Movie was: ${secretWord}`
+        winner.innerHTML = `YOU LOOSE! The Correct Movie was: ${secretWord.toUpperCase()}`
         win.appendChild(winner);
         plyAgn.style.display = 'block';
         hint.style.display = "none";
@@ -194,7 +207,7 @@ function render(){
         // WIN CONDITION
     }if(lettersLeft === 0){
         abcBtn.style.display = "none";
-        winner.innerHTML = `YOU WON! The Movie Was: ${secretWord}`
+        winner.innerHTML = `YOU WON! The Movie Was: ${secretWord.toUpperCase()}`
         win.appendChild(winner);
         plyAgn.style.display = 'block';
         hint.style.display = "none";
@@ -224,6 +237,8 @@ function renderImage(){
         imgOne.style.display = 'block';
     }
 }
+
+
 
 function renderHint(){
     hint.style.display = "block";
@@ -255,7 +270,17 @@ function playAgain(){
     imgOne.style.display = 'none';
     imgSev.style.display = 'block';
     hintText.innerHTML = ''
+    hint.innerHTML = 'Need A Hint?'
     abcBtn.style.display = "block";
+//RESET IMAGES
+    imgOne.style.display = 'none';
+    imgTwo.style.display = 'none';
+    imgThree.style.display = 'none';
+    imgFour.style.display = 'none';
+    imgFive.style.display = 'none';
+    imgSix.style.display = 'none';
+  
+
     
     for(let btn of abcBtn.children){
         btn.removeAttribute('disabled');
