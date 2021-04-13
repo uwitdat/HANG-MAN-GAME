@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+
+#popcorn {
+  animation: deflate 3s;
+
+  animation-iteration-count: infinite;
+}
+
+#staw {
+  animation: rotate 3s;
+
+  animation-iteration-count: infinite;
+}
+
+#strips {
+}
+
+@keyframes deflate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(80deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}

@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 300px;
   width: 50%;
-  background: linear-gradient(to right, #8b8d97d2, #ffffffc4);
+  /* background: linear-gradient(to right, #8b8d97d2, #ffffffc4); */
 }
 
 body {
-  background: linear-gradient(to right, #0a1864, #161616);
+  background: linear-gradient(to right, #bd6868, #2012e2);
   font-family: "Gloria Hallelujah", cursive;
 }
 
@@ -89,22 +89,22 @@ body {
   color: #ffffff;
 }
 .img {
-  opacity: 90%;
-  display: flex;
-  justify-content: center;
+  /* opacity: 90%; */
+  display: inline-block;
+  /* justify-content: center; */
   text-align: center;
-  animation: deflate 3s;
-  animation-iteration-count: infinite;
+  /* animation: deflate 3s;
+  animation-iteration-count: infinite; */
 }
 
-#sev {
+/* #sev {
   margin: 0 auto;
 }
 #one {
   display: none;
   margin: 0 auto;
   animation: fadeIn 2s;
-}
+} */
 
 .fade-in {
   animation: fadeIn 2s;
@@ -119,7 +119,7 @@ body {
   }
 }
 
-#two {
+/* #two {
   display: none;
   margin: 0 auto;
 }
@@ -142,7 +142,7 @@ body {
 #six {
   display: none;
   margin: 0 auto;
-}
+} */
 
 .play-again {
   display: none;
@@ -181,13 +181,14 @@ body {
 }
 
 .remain-guess {
-  display: flex;
-  margin: 10px;
-  color: #bd2e2e;
-  font-size: 150%;
+  display: block;
+  margin: 0 auto;
+  color: #ffffffdc;
+  font-size: 160%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
   padding-left: 20px;
-  animation: deflate 3s;
+  animation: inflate 3s;
+  animation-iteration-count: infinite;
 }
 
 @keyframes deflate {
@@ -214,19 +215,21 @@ body {
   }
 }
 .past-guesses {
-  display: flex;
+  display: inline-block;
+  margin: 0 auto;
   padding-left: 20px;
   margin: 10px;
-  color: #bd2e2e;
-  font-size: 150%;
+  color: #ffffffdc;
+  font-size: 160%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
   animation: inflate 3s;
+  animation-iteration-count: infinite;
 }
 
 .title {
   margin-top: 20px;
   color: #ffffff;
-  font-size: 180%;
+  font-size: 150%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
@@ -241,22 +244,24 @@ h4 {
 }
 
 #secret-word {
-  color: #ffffff;
-  font-size: 180%;
+  color: #ff3131;
+  font-size: 230%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
 .winner {
-  color: #bd2e2e;
+  color: #ffffffdc;
   font-size: 180%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
   text-align: center;
   animation: fadeIn 2s;
+  animation: deflate 3s;
+  animation-iteration-count: infinite;
 }
 
 .hint-text {
-  color: #bd2e2e;
-  font-size: 150%;
+  color: #ff3131;
+  font-size: 170%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
   text-align: center;
   margin-bottom: 60px;
