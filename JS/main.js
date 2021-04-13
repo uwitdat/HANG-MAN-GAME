@@ -15,18 +15,18 @@ let win = document.querySelector('.win-lose')
 
 //VARIABLES
 let possibleWords = [
-    {movie: 'DOCTOR ZHIVAGO', hint: 'Release Year: 1965, Genre: Romance/War, Director: David Lean'},
-    {movie: 'SLUMDOG MILLIONAIRE', hint: 'Release Year: 2008, Genre: Romance/Drama, Director: Danny Boyle'},
-    {movie: 'BEAUTY AND THE BEAST', hint: 'Release Year: 1991, Genre: Disney/Kids, Director: Gary Trousdale'},
-    {movie: 'BROKEBACK MOUNTAIN', hint: 'Release Year: 2005, Genre: Romance/Drama, Director: Ang Lee'},
-    {movie: 'THE GOOD THE BAD AND THE UGLY', hint: 'Release Year: 1966, Genre: Western, Director: Sergio Leone'},
-    {movie: 'THE TITANIC', hint: 'Release Year: 1997, Genre: Romance/Drama, Director: James Cameron'},
-    {movie: 'GLADIATOR', hint:'Release Year: 2000, Genre: Action/Adv, Director: Ridley Scott'},
-    {movie: 'AVATAR', hint:'Release Year: 2009, Genre: Sci-Fi, Director: James Cameron'},
-    {movie: 'THE LION KING', hint:'Release Year: 1994, Genre: Disney/Kids, Director: Rob Minkoff'},
-    {movie: 'GROUNDHOG DAY', hint:'Release Year: 1993, Genre: Comedy, Director: Harold Ramis'},
-    {movie: 'TAXI DRIVER', hint:'Release Year: 1976, Genre: Crime/Drama, Director: Martin Scorsese'},
-    {movie: 'THE MATRIX', hint:'Release Year: 1999, Genre: Sci-Fi, Director: The Wachowskis'}
+    {movie: 'FORREST GUMP', hint: 'Life is like a box of chocolates...'},
+    {movie: 'SLUMDOG MILLIONAIRE', hint: 'A 20 million dollar question.'},
+    {movie: 'FIGHT CLUB', hint: 'The first rule is..?'},
+    {movie: 'THE WOLF OF WALL STREET', hint: 'Lots of drugs. Lots of stocks.'},
+    {movie: 'THE GOOD THE BAD AND THE UGLY', hint: 'Clint Eastwood stars in this classic western.'},
+    {movie: 'THE TITANIC', hint: 'This blockbuster flick features Leonardo Di Caprio and sinking ships'},
+    {movie: 'GLADIATOR', hint:'Swords. Shields. Russell Crowe. Need I say More?'},
+    {movie: 'THE SHINING', hint:'Red Rum?'},
+    {movie: 'OCEANS ELEVEN', hint:'Casinos? Las Vegas? George Clooney?'},
+    {movie: 'THE SHAWSHANK REDEMPTION', hint:'Morgan Freeman and lots of jail time.'},
+    {movie: 'TAXI DRIVER', hint:'Robert De Niro stars in this Scorsese classic.'},
+    {movie: 'THE MATRIX', hint:'Red Pill, Blue pill.'}
     ]
 
 let secretWord = ''
@@ -103,6 +103,7 @@ function gamePlay(ltr){
         guessTracker.guess--;
         renderImage();
         pastGuess.innerHTML = `Wrong Guesses: ${pastGuesses.join(' ').toUpperCase()}`
+        pastGuess.classList.add('fade-in');
         guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
         render();   
     }   //IF CORRECT GUESS     
