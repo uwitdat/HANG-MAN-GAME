@@ -19,7 +19,6 @@ let possibleWords = [
     {movie: 'SLUMDOG MILLIONAIRE', hint: 'A 20 million dollar question.'},
     {movie: 'FIGHT CLUB', hint: 'The first rule is..?'},
     {movie: 'THE WOLF OF WALL STREET', hint: 'Lots of drugs. Lots of stocks.'},
-
     {movie: 'THE TITANIC', hint: 'This blockbuster flick features Leonardo Di Caprio and sinking ships'},
     {movie: 'GLADIATOR', hint:'Swords. Shields. Russell Crowe. Need I say More?'},
     {movie: 'THE SHINING', hint:'Red Rum?'},
@@ -40,6 +39,7 @@ let guessTracker = {
     guess: 6
 }
 
+
 let guesses = document.querySelector('.remain-guess')
 guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
 const resetBtn = document.querySelector('.reset')
@@ -49,6 +49,17 @@ let pastGuess = document.querySelector('.past-guesses')
 pastGuess.innerHTML = `Wrong Guesses:`
 let img = document.getElementById('.img')
 let movieWord = document.getElementById("secret-word")
+
+//AUDIO
+// const rightSfx = new Audio();
+// rightSfx.src = './IMG/CORRECT.wav'
+
+// const wrongSfx = new Audio();
+// wrongSfx.src = './IMG/WRONG.wav'
+
+const startSfx = new Audio();
+startSfx.src = './IMG/START.wav'
+
 
 // START
 resetBtn.addEventListener('click', function (e){
@@ -70,6 +81,7 @@ abcBtn.addEventListener('click', function(e) {
 }) 
 
 function start(){ 
+    startSfx.play();
     abcBtn.style.display = 'block';
     resetBtn.style.display = 'none';   
     let randomizer = possibleWords[Math.floor(Math.random() * possibleWords.length)];
@@ -102,6 +114,7 @@ function gamePlay(ltr){
         if(guessTracker.guess <= 0)return;
         guessTracker.guess--;
         renderImage();
+        // wrongSfx.play();
         pastGuess.innerHTML = `Wrong Guesses: ${pastGuesses.join(' ').toUpperCase()}`
         guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
 
@@ -110,6 +123,7 @@ function gamePlay(ltr){
         for(let j = 0; j < secretWord.length; j++){
             if(secretWord[j] === ltr){
             hiddenWord[j] = ltr
+            // rightSfx.play();
             movieWord.innerHTML = `${hiddenWord.join(' ').toUpperCase()}` 
             lettersLeft--;
             render();

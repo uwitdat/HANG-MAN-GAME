@@ -21,9 +21,6 @@ body {
   animation-iteration-count: infinite;
 }
 
-#strips {
-}
-
 @keyframes deflate {
   0% {
     transform: scale(1);
