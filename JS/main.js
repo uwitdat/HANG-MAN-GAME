@@ -44,6 +44,7 @@ let guesses = document.querySelector('.remain-guess')
 guesses.innerHTML = `Guesses Remaining: ${guessTracker.guess}`;
 const resetBtn = document.querySelector('.reset')
 const abcBtn = document.querySelector('.buttons')
+abcBtn.style.display = 'none';
 let pastGuess = document.querySelector('.past-guesses')
 pastGuess.innerHTML = `Wrong Guesses:`
 let img = document.getElementById('.img')
@@ -69,6 +70,7 @@ abcBtn.addEventListener('click', function(e) {
 }) 
 
 function start(){ 
+    abcBtn.style.display = 'block';
     resetBtn.style.display = 'none';   
     let randomizer = possibleWords[Math.floor(Math.random() * possibleWords.length)];
     secretWord = randomizer.movie.toLowerCase();
@@ -118,7 +120,7 @@ function render(){
     //  LOSS CONDITION
     if(guessTracker.guess === 0){
         abcBtn.style.display = "none";
-        winner.innerHTML = `YOU LOOSE! The Correct Movie was: ${secretWord.toUpperCase()}`
+        winner.innerHTML = `YOU LOOSE! <br> The Correct Movie was: ${secretWord.toUpperCase()}`
         win.appendChild(winner);
         plyAgn.style.display = 'block';
         hint.style.display = "none";
@@ -126,7 +128,7 @@ function render(){
         // WIN CONDITION
     }if(lettersLeft === 0){
         abcBtn.style.display = "none";
-        winner.innerHTML = `YOU WON! The Movie Was: ${secretWord.toUpperCase()}`
+        winner.innerHTML = `YOU WON! <br> The Movie Was: ${secretWord.toUpperCase()}`
         win.appendChild(winner);
         plyAgn.style.display = 'block';
         hint.style.display = "none";

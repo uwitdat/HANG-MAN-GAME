@@ -5,25 +5,22 @@
   border: 1px solid black;
   min-height: 420px;
   width: 60%;
-  background-color: rgb(230, 230, 243);
+  background: linear-gradient(to right, #8b8d97, #ffffff);
 }
 
 body {
   background: linear-gradient(to right, #0a1864, #161616);
-  font-family: "Crimson Text", serif;
-}
-
-.container {
+  font-family: "Gloria Hallelujah", cursive;
 }
 
 .buttons {
+  text-align: center;
   padding: 7px;
   margin: 7px;
 }
 
 .buttons > button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-
   color: #ffffffdc;
   font-size: larger;
   background-color: transparent;
@@ -52,21 +49,20 @@ body {
   text-align: center;
 }
 
-.remain-guess {
-  display: flex;
-}
-
-.remain-guess > h3 {
-  margin: 5px;
+.hang-man {
+  text-align: center;
+  margin-top: 30px;
 }
 
 .reset {
+  display: inline-block;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #ffffffdc;
-  font-size: larger;
+  font-size: 170%;
   background-color: transparent;
   padding: 5px;
-  margin: 3px;
+  margin: 0 auto;
+  margin-bottom: 40px;
   border: 0.1em solid #ffffff;
 }
 
@@ -76,41 +72,14 @@ body {
   color: #ffffff;
 }
 
-.img {
-}
-
-#one {
-  display: none;
-}
-
-#two {
-  display: none;
-}
-
-#three {
-  display: none;
-}
-
-#four {
-  display: none;
-}
-
-#five {
-  display: none;
-}
-
-#six {
-  display: none;
-}
-
 .hint {
   display: none;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #ffffffdc;
-  font-size: larger;
+  font-size: 170%;
   background-color: transparent;
-  padding: 5px;
-  margin: 3px;
+  margin: 0 auto;
+  margin-bottom: 40px;
   border: 0.1em solid #ffffff;
 }
 
@@ -119,15 +88,51 @@ body {
   border: 0.1em solid #ffffff;
   color: #ffffff;
 }
+.img {
+  opacity: 90%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#one {
+  display: none;
+  margin: 0 auto;
+}
+
+#two {
+  display: none;
+  margin: 0 auto;
+}
+
+#three {
+  display: none;
+  margin: 0 auto;
+}
+
+#four {
+  display: none;
+  margin: 0 auto;
+}
+
+#five {
+  display: none;
+  margin: 0 auto;
+}
+
+#six {
+  display: none;
+  margin: 0 auto;
+}
 
 .play-again {
   display: none;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #ffffffdc;
-  font-size: larger;
+  font-size: 170%;
   background-color: transparent;
   padding: 5px;
-  margin: 3px;
+  margin: 0 auto;
   border: 0.1em solid #ffffff;
 }
 
@@ -145,54 +150,69 @@ body {
   width: 10px;
 }
 
-#secret-word {
+.word-holder {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-button.reset {
-  color: black;
+#secret-word {
+  display: inline-block;
+  margin: 0 auto;
+  letter-spacing: 4px;
 }
 
 .remain-guess {
-  display: inline-block;
-  color: #ffffff;
+  display: flex;
+  margin: 10px;
+  color: #bd2e2e;
   font-size: 150%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  padding-left: 20px;
 }
 
 .past-guesses {
-  color: #ffffff;
+  display: flex;
+  padding-left: 20px;
+  margin: 10px;
+  color: #bd2e2e;
   font-size: 150%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
 .title {
+  margin-top: 20px;
   color: #ffffff;
-  font-size: 200%;
+  font-size: 180%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
 h1 {
   margin: auto;
+  color: #ffffff;
 }
 
 h4 {
   margin: auto;
+  color: #ffffff;
 }
 
 #secret-word {
   color: #ffffff;
-  font-size: 300%;
+  font-size: 180%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
 .winner {
-  color: #ffffff;
-  font-size: 200%;
+  color: #bd2e2e;
+  font-size: 180%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  text-align: center;
 }
 
 .hint-text {
-  color: #ffffff;
+  color: #bd2e2e;
   font-size: 150%;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  text-align: center;
+  margin-bottom: 60px;
 }
